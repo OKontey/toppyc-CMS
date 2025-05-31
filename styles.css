@@ -1,0 +1,1355 @@
+/* === Global Styles === */
+body {
+    font-family: 'Roboto', sans-serif; /* Modern, clean font */
+    background-color: #eef5f9; /* Very light blue background */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Dark grey text */
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Center the main container */
+    max-width: 1500px; /* Increased max width */
+    margin: 30px auto;
+    padding: 0 20px; /* Adjusted padding */
+    box-sizing: border-box;
+    gap: 20px; /* Gap between sidebars and main content */
+}
+
+h2, h3, h4 {
+    color: #1f3a60; /* Deep blue-gray */
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+h2 {
+    font-size: 32px; /* Slightly larger */
+    border-bottom: 3px solid #3a7ecf; /* Muted blue underline */
+    padding-bottom: 12px;
+    margin-bottom: 25px;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 18px;
+    color: #3a7ecf; /* Muted blue for subheadings */
+}
+
+h4 {
+    font-size: 20px;
+    margin-bottom: 12px;
+    color: #555; /* Darker grey */
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* === Sidebars === */
+.sidebar-left, .sidebar-right {
+    width: 280px; /* Increased width */
+    flex-shrink: 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f0f6fa 100%); /* Lighter gradient */
+    padding: 25px; /* Adjusted padding */
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Standard shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Reduced gap */
+    border: 1px solid #dce4ec; /* Lighter border */
+}
+
+.sidebar-left h3, .sidebar-right h3 {
+     text-align: center;
+     margin-bottom: 20px; /* Adjusted margin */
+     padding-bottom: 15px;
+     border-bottom: 1px solid #dce4ec; /* Lighter border */
+     color: #1f3a60;
+}
+
+.sidebar-left h4 {
+    margin-top: 25px; /* Adjusted margin */
+    border-top: 1px solid #dce4ec; /* Lighter border */
+    padding-top: 15px; /* Adjusted padding */
+    text-align: left;
+    color: #3a7ecf;
+}
+
+/* Sidebar Links (non-button) */
+.sidebar-left a:not(.btn), .sidebar-right a:not(.btn) { /* Use :not(.btn) to exclude button styles */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 5px; /* Adjusted padding */
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 16px; /* Slightly larger */
+}
+
+.sidebar-left a:not(.btn) i, .sidebar-right a:not(.btn) i {
+     font-size: 18px; /* Slightly larger icons */
+     color: #5a9bd4; /* Brighter blue icons */
+     min-width: 25px; /* Fixed width for icons */
+     text-align: center;
+}
+
+.sidebar-left a:not(.btn):hover, .sidebar-right a:not(.btn):hover {
+    color: #3a7ecf;
+    transform: translateX(5px);
+}
+
+
+.sidebar-input {
+    margin-bottom: 15px;
+    border: 1px solid #a2c1d9; /* Slightly darker blue border */
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px; /* Slightly larger */
+    background-color: #f8fcff; /* Very light blue background */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: calc(100% - 24px); /* Adjust for padding */
+    box-sizing: border-box;
+}
+
+.sidebar-input:focus {
+    border-color: #3a7ecf;
+    box-shadow: 0 0 8px rgba(58, 126, 207, 0.4); /* Stronger shadow */
+    outline: none;
+}
+
+/* === Buttons (Global Style based on Sidebar Buttons) === */
+.btn {
+    display: inline-flex; /* Use inline-flex for button text and icon alignment */
+    align-items: center;
+    gap: 8px; /* Gap between text and icon */
+    padding: 10px 18px; /* Standard padding */
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    box-sizing: border-box;
+    border: 1px solid transparent; /* Base border */
+    justify-content: center; /* Center content by default */
+    vertical-align: middle; /* Align vertically */
+}
+
+.btn i {
+    font-size: 18px; /* Standard icon size */
+}
+
+
+.btn-primary {
+    background-color: #3a7ecf; /* Muted blue */
+    color: #ffffff;
+    border-color: #3a7ecf;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #2c6bb1; /* Darker blue on hover */
+    border-color: #2c6bb1;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: #f0f0f0; /* Light grey */
+    color: #555;
+    border-color: #ccc;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0; /* Darker grey on hover */
+    border-color: #bbb;
+    transform: translateY(-1px);
+}
+
+.btn-success { /* Стиль для кнопки "Одобрить" */
+    background-color: #81c784; /* Green */
+    color: #ffffff;
+    border-color: #66bb6a;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-success:hover {
+    background-color: #66bb6a;
+    border-color: #4caf50;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn-info {
+    background-color: #5a9bd4; /* Brighter blue */
+    color: #ffffff;
+    border-color: #5a9bd4;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-info:hover {
+    background-color: #4a8ecf; /* Darker blue on hover */
+    border-color: #4a8ecf;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn-danger {
+    background-color: #e57373; /* Light red */
+    color: #ffffff;
+    border-color: #e57373;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-danger:hover {
+    background-color: #ef5350; /* Darker red on hover */
+    border-color: #ef5350;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn-admin { /* Specific style for admin button */
+     background-color: #ffb74d; /* Light orange */
+     color: #ffffff;
+     border-color: #ffb74d;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-admin:hover {
+     background-color: #ffa726; /* Darker orange on hover */
+     border-color: #ffa726;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+     transform: translateY(-1px);
+}
+
+
+.btn-small {
+    padding: 6px 12px; /* Smaller padding */
+    font-size: 14px; /* Smaller font size */
+    gap: 5px; /* Smaller gap */
+}
+
+.btn-small i {
+     font-size: 16px; /* Adjusted icon size for small buttons */
+}
+
+
+/* Sidebar specific button adjustments */
+.sidebar-btn {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start; /* Align content to the start */
+    padding: 10px 15px; /* Match other buttons but with indent */
+    margin-bottom: 10px; /* Adjusted margin */
+     box-shadow: none; /* Remove shadow for sidebar buttons */
+}
+
+.sidebar-btn:hover {
+     box-shadow: 0 3px 8px rgba(58, 126, 207, 0.1); /* Add a subtle shadow on hover */
+}
+
+
+/* === Main Content Area === */
+.main-content {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    margin: 0; /* Remove margin */
+    min-width: 0;
+    border: 1px solid #dce4ec;
+    overflow-x: hidden;
+    max-width: 900px; /* Max width for main content */
+    width: 100%; /* Ensure it takes full width up to max-width */
+}
+
+/* === Tabs === */
+.tab-container {
+    display: flex;
+    border-bottom: 2px solid #dce4ec;
+    margin-bottom: 25px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.tab-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+    padding: 12px 20px; /* Adjusted padding */
+    cursor: pointer;
+    color: #6a6a6a;
+    border-bottom: 3px solid transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: -2px;
+}
+
+.tab::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+
+.tab:hover {
+     color: #3a7ecf;
+}
+
+.tab.active {
+    color: #1f3a60;
+    font-weight: 700;
+}
+
+.tab.active::after {
+     background-color: #1f3a60;
+}
+
+.tab-content {
+    display: none;
+    padding-top: 10px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Ensure content within tabs doesn't overflow */
+.tab-content table {
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    display: block; /* Change to block to allow horizontal scroll */
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+    border-collapse: collapse; /* Collapse borders for cleaner table */
+}
+
+table th, table td {
+    padding: 15px;
+    border-bottom: 1px solid #eef5f9;
+    text-align: left;
+    font-size: 15px;
+    color: #444;
+    white-space: nowrap;
+}
+
+table th {
+    background-color: #ebf5fb;
+    color: #1f3a60;
+    font-weight: 700;
+    border-bottom: 2px solid #c1d9e8;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9fbfc;
+}
+
+table tbody tr:hover {
+    background-color: #eef5f9;
+}
+
+table td:last-child {
+    /* text-align: center; */ /* Removed this to align actions left */
+}
+
+/* === Site Widgets (Index Page) === */
+.site-block-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 25px; /* Gap between grid items */
+    padding-top: 10px;
+}
+
+.site-widget {
+    background-color: #ffffff;
+    border: 1px solid #dce4ec;
+    border-radius: 10px;
+    overflow: hidden; /* Hide overflow for rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Use flexbox for layout inside widget */
+    flex-direction: column; /* Stack image and content vertically */
+}
+
+.site-widget:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.site-widget-image-container {
+    width: 100%;
+    height: 180px; /* Fixed height for image container */
+    overflow: hidden; /* Hide parts of image outside container */
+    border-bottom: 1px solid #dce4ec;
+}
+
+.site-widget-image-container img {
+    display: block;
+    width: 100%;
+    height: 100%; /* Fill container height */
+    object-fit: cover; /* Cover the container, cropping as needed */
+    transition: transform 0.3s ease;
+}
+
+.site-widget:hover .site-widget-image-container img {
+    transform: scale(1.05); /* Slightly zoom on hover */
+}
+
+.site-widget-content {
+    padding: 15px; /* Padding around text content */
+    flex-grow: 1; /* Allow content to grow */
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Gap between content items */
+}
+
+.site-widget-content h3 {
+    margin-top: 0;
+    margin-bottom: 5px; /* Reduced margin */
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.site-widget-content h3 a {
+    color: #1f3a60;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-widget-content h3 a:hover {
+    color: #3a7ecf;
+    text-decoration: underline;
+}
+
+.site-widget-content p {
+    margin-bottom: 5px; /* Reduced margin */
+    font-size: 14px; /* Smaller text */
+    color: #555;
+     display: flex;
+     align-items: center;
+     gap: 8px;
+}
+
+.site-widget-content p i {
+    color: #5a9bd4; /* Icon color */
+    font-size: 16px;
+}
+
+
+.site-widget-buttons {
+    margin-top: auto; /* Push buttons to the bottom */
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px; /* Gap between buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.site-widget-buttons .btn-small {
+    flex-grow: 1; /* Allow buttons to grow */
+    text-align: center;
+     justify-content: center; /* Center button text and icon */
+}
+
+
+/* === Site Card (Site Page) === */
+.site-card {
+    display: flex; /* Use flexbox */
+    gap: 30px; /* Gap between image and info */
+    margin-bottom: 30px;
+    padding: 25px;
+    background-color: #f9fbfc; /* Light background */
+    border: 1px solid #dce4ec;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.site-card-image-container {
+    width: 300px; /* Fixed width for the image */
+    height: 200px; /* Fixed height */
+    flex-shrink: 0; /* Prevent shrinking */
+    overflow: hidden;
+    border-radius: 8px; /* Rounded corners for image container */
+    border: 1px solid #ccc; /* Subtle border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.site-card-image-container img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container */
+}
+
+.site-info {
+    flex-grow: 1; /* Allow info section to grow */
+    min-width: 300px; /* Minimum width before wrapping */
+}
+
+.site-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 26px;
+    color: #1f3a60;
+}
+
+.site-info p {
+    margin-bottom: 8px; /* Reduced margin */
+    font-size: 16px;
+    color: #444;
+}
+
+.site-info p strong {
+     color: #1f3a60; /* Darker color for labels */
+}
+
+.site-info a {
+    color: #3a7ecf;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-info a:hover {
+    color: #1f3a60;
+    text-decoration: underline;
+}
+
+.site-stats {
+     margin-top: 20px;
+     padding-top: 20px;
+     border-top: 1px solid #dce4ec;
+     width: 100%; /* Take full width */
+}
+
+
+/* === Reviews === */
+.review {
+    margin-bottom: 25px;
+    padding: 20px;
+    background-color: #f9fbfc;
+    border-radius: 10px;
+    border: 1px solid #e0eaf0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.review .replies {
+    margin-top: 20px;
+}
+
+.review .replies .review { /* Style for nested replies */
+    margin-left: 30px;
+    margin-top: 20px;
+    border-left: 4px solid #c1d9e8; /* Visual indicator for replies */
+    padding-left: 20px;
+    background-color: #e9f2f9; /* Slightly different background for replies */
+    border-radius: 0 8px 8px 0; /* Rounded corners on right side */
+}
+
+
+.review p {
+    margin-bottom: 10px;
+}
+
+.review-date {
+    font-size: 14px;
+    color: #777;
+    margin-left: 10px;
+}
+
+/* Стили для отображения репутации в списке отзывов (-5 до +5) */
+.review .reputation {
+    font-weight: 700;
+    margin-left: 10px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: #ffffff;
+    background-color: #5a9bd4; /* Цвет по умолчанию (например, для 0 или положительных) */
+    display: inline-block; /* Чтобы padding работал корректно */
+    font-size: 0.9em; /* Чуть меньше размер текста оценки */
+    vertical-align: middle; /* Выравнивание по вертикали */
+}
+
+.review .reputation.negative {
+    background-color: #e57373; /* Красный для отрицательных */
+}
+
+
+/* Стиль для контейнера миниатюр изображений под отзывом */
+.review-images-container {
+    margin-top: 10px;
+    display: flex; /* Используем flexbox для выравнивания миниатюр */
+    gap: 10px; /* Отступ между миниатюрами */
+    flex-wrap: wrap; /* Перенос на новую строку, если много изображений */
+}
+
+/* Стиль для миниатюр изображений */
+.review-thumbnail {
+    width: 80px; /* Фиксированная ширина миниатюры */
+    height: 80px; /* Фиксированная высота миниатюры */
+    object-fit: cover; /* Обрезка изображения для сохранения пропорций */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer; /* Показываем, что изображение кликабельно */
+    transition: transform 0.2s ease-in-out; /* Плавное увеличение при наведении */
+}
+
+.review-thumbnail:hover {
+    transform: scale(1.05); /* Небольшое увеличение при наведении */
+}
+
+
+/* Стили для кнопок действий под отзывами (Ответить, Редактировать, Удалить) */
+/* Наследуют общие стили .btn и .btn-small */
+
+/* Стиль для формы вокруг кнопки "Удалить" */
+.delete-review-form {
+    display: inline-block; /* Устанавливаем inline-block для выравнивания с другими кнопками */
+    margin-right: 5px; /* Небольшой отступ справа от формы */
+    vertical-align: middle;
+}
+
+/* Стиль для самой кнопки "Удалить" */
+.delete-review-form .delete-button {
+    /* Наследует стили от .btn и .btn-small */
+     background-color: #f44336; /* Red color */
+     border-color: #d32f2f; /* Darker red border */
+     color: white; /* White text */
+     font-size: 0.8em; /* Small size */
+     padding: 4px 8px; /* Small padding */
+     gap: 5px; /* Space between icon and text */
+     display: inline-flex; /* Используем flexbox для центрирования иконки и текста */
+     align-items: center;
+     justify-content: center;
+     text-decoration: none;
+     cursor: pointer;
+     border-radius: 4px;
+     line-height: 1.2;
+}
+
+.delete-review-form .delete-button:hover {
+     background-color: #d32f2f; /* Darker red on hover */
+     border-color: #b71c1c;
+     color: white;
+     text-decoration: none;
+}
+
+.delete-review-form .delete-button i {
+     font-size: 1em; /* Icon size matches text size */
+}
+
+/* Стиль для кнопки "Редактировать" */
+.edit-review-button {
+    /* Наследует стили от .btn и .btn-small */
+    margin-left: 10px; /* Небольшой отступ слева */
+    vertical-align: middle; /* Выравнивание по вертикали */
+     font-size: 0.8em; /* Меньший размер шрифта */
+     padding: 4px 8px; /* Меньший padding */
+     gap: 5px; /* Меньший отступ между иконкой и текстом */
+     /* Добавляем стили для лучшего внешнего вида */
+     background-color: #607d8b; /* Blue-grey */
+     border-color: #455a64;
+     color: white;
+     display: inline-flex; /* Используем flexbox для центрирования иконки и текста */
+     align-items: center;
+     justify-content: center;
+     text-decoration: none; /* Убираем подчеркивание, если это ссылка */
+     cursor: pointer;
+     border-radius: 4px; /* Немного скругляем углы */
+     line-height: 1.2; /* Улучшаем выравнивание текста/иконки */
+}
+
+.edit-review-button:hover {
+     background-color: #455a64;
+     border-color: #37474f;
+     color: white;
+     text-decoration: none;
+}
+
+.edit-review-button i {
+     font-size: 1em; /* Размер иконки соответствует размеру текста кнопки */
+}
+
+
+/* Стиль для кнопки "Ответить" */
+.reply-button {
+     /* Наследует стили от .btn и .btn-small */
+     margin-left: 10px; /* Отступ слева */
+     vertical-align: middle;
+     font-size: 0.8em;
+     padding: 4px 8px;
+     gap: 5px;
+     /* Добавляем стили для лучшего внешнего вида */
+     background-color: #5a9bd4; /* Current blue */
+     border-color: #3a7ecf;
+     color: white;
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     text-decoration: none;
+     cursor: pointer;
+     border-radius: 4px;
+     line-height: 1.2;
+}
+
+.reply-button:hover {
+     background-color: #3a7ecf;
+     border-color: #1f3a60;
+     color: white;
+     text-decoration: none;
+}
+
+.reply-button i {
+     font-size: 1em;
+}
+
+
+/* Стиль для формы ответа */
+.reply-form {
+     margin-top: 15px;
+     background-color: #eef5f9;
+     padding: 15px;
+     border-radius: 8px;
+     border: 1px solid #dce4ec;
+     display: none; /* Изначально скрыта */
+}
+
+.reply-form textarea {
+     width: calc(100% - 20px); /* Adjust for padding */
+     margin-bottom: 10px;
+     border: 1px solid #a2c1d9;
+     border-radius: 6px;
+     padding: 10px;
+     font-size: 15px;
+     min-height: 60px;
+     box-sizing: border-box;
+     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+     resize: vertical; /* Allow vertical resize */
+}
+
+.reply-form textarea:focus {
+     border-color: #3a7ecf;
+     box-shadow: 0 0 6px rgba(58, 126, 207, 0.3);
+     outline: none;
+}
+
+.reply-form .btn {
+     margin-right: 10px;
+}
+
+
+/* Контейнер для формы добавления отзыва */
+.review-form-container {
+    background-color: #eef5f9; /* Светлый фон */
+    border: 1px solid #dce4ec; /* Светлая рамка */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px; /* Отступ снизу */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.review-form-container h3 {
+     margin-top: 0;
+     margin-bottom: 20px;
+     padding-bottom: 10px;
+     border-bottom: 1px solid #dce4ec;
+     color: #1f3a60;
+     font-size: 20px;
+}
+
+.review-form-container form p {
+     margin-bottom: 15px; /* Отступ между параграфами формы */
+     display: flex; /* Используем flexbox для выравнивания label и input */
+     align-items: flex-start; /* Выравнивание элементов по верху */
+     gap: 15px; /* Отступ между label и input/select */
+     flex-wrap: wrap; /* Перенос элементов на новую строку на маленьких экранах */
+}
+
+.review-form-container form p label {
+     flex-basis: 150px; /* Фиксированная ширина для label */
+     flex-shrink: 0; /* Запретить сжиматься */
+     font-weight: 600;
+     color: #555;
+     padding-top: 8px; /* Выравнивание текста label с началом input/textarea */
+}
+
+.review-form-container form p .input {
+     flex-grow: 1; /* Позволить input/select/textarea занимать все доступное место */
+     width: auto; /* Отключаем фиксированную ширину, заданную ранее */
+     max-width: 100%; /* Ограничиваем максимальную ширину */
+}
+
+.review-form-container form p textarea.input {
+     min-height: 100px; /* Минимальная высота для textarea */
+     resize: vertical; /* Разрешить изменение размера только по вертикали */
+}
+
+
+.review-form-container form button.btn {
+     margin-top: 10px; /* Отступ сверху для кнопки */
+     width: auto; /* Убираем полную ширину для кнопки */
+}
+
+/* Контейнер для отображения выбранных файлов */
+#selected-files-container {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+#selected-files-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+}
+
+#selected-files-container li {
+    margin-bottom: 3px;
+    word-break: break-word;
+}
+
+
+/* Контейнер для формы редактирования отзыва */
+.review-edit-form {
+    background-color: #f0f6fa; /* Slightly different light background */
+    border: 1px solid #dce4ec;
+    border-radius: 8px;
+    padding: 15px; /* Smaller padding than add form */
+    margin-top: 15px; /* Space from review content */
+    margin-bottom: 15px; /* Space below form */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.03);
+    display: none; /* Изначально скрыта */
+}
+
+.review-edit-form h3 {
+     margin-top: 0;
+     margin-bottom: 15px;
+     padding-bottom: 8px;
+     border-bottom: 1px solid #dce4ec;
+     color: #1f3a60;
+     font-size: 18px;
+}
+
+.review-edit-form form p {
+    margin-bottom: 12px; /* Отступ между параграфами формы */
+    display: flex;
+    align-items: flex-start; /* Выравнивание по верху */
+    gap: 10px; /* Отступ между label и input/select */
+    flex-wrap: wrap;
+}
+
+.review-edit-form form p label {
+    flex-basis: 120px; /* Меньшая ширина для label в edit форме */
+    flex-shrink: 0;
+    font-weight: 600;
+    color: #555;
+     font-size: 15px;
+     padding-top: 6px; /* Выравнивание текста label */
+}
+
+.review-edit-form form p .input {
+     flex-grow: 1;
+     width: auto;
+     max-width: 100%;
+     padding: 10px; /* Меньший padding */
+     font-size: 15px;
+}
+
+.review-edit-form form p textarea.input {
+     min-height: 80px; /* Меньшая минимальная высота */
+}
+
+.review-edit-form form button.btn {
+     margin-top: 5px; /* Отступ сверху */
+     margin-right: 10px; /* Отступ между кнопками */
+}
+
+/* Секция для отображения и удаления текущих изображений при редактировании */
+.edit-images-section {
+     margin-top: 15px;
+     padding-top: 15px;
+     border-top: 1px solid #eee;
+}
+
+.edit-images-section h4 {
+     font-size: 1em;
+     margin-bottom: 10px;
+     border-bottom: none;
+     padding-bottom: 0;
+     color: #444; /* Цвет текста */
+}
+
+.edit-images-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.edit-image-item {
+    background-color: #fff; /* Белый фон для каждого элемента */
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block; /* Элементы в строку */
+    vertical-align: top; /* Выравнивание по верхнему краю */
+}
+
+.edit-image-item img {
+    display: block; /* Картинка блочный элемент */
+    margin: 0 auto 5px auto; /* Центрирование и нижний отступ */
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.edit-image-item label {
+     display: block; /* Чекбокс и текст под картинкой */
+     font-size: 0.9em;
+     color: #555;
+}
+
+/* === Forms and Inputs === */
+.input {
+    display: block; /* Make inputs block level */
+    width: calc(100% - 24px); /* Adjust for padding */
+    padding: 12px;
+    margin-bottom: 20px; /* Added margin */
+    border: 1px solid #a2c1d9;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #f8fcff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus {
+    border-color: #3a7ecf;
+    box-shadow: 0 0 8px rgba(58, 126, 207, 0.4);
+    outline: none;
+}
+
+textarea.input {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* === Alerts === */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.alert p {
+    margin: 0;
+    padding: 0;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* === Modal (for Counter Code) === */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto; /* Center the modal box */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more specific, e.g., 500px */
+    max-width: 600px; /* Max width */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative; /* Needed for the close button positioning */
+}
+
+.close-modal {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#counterCodeArea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+/* === Stats Blocks Styling === */
+.stats-block-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid for blocks */
+    gap: 20px; /* Gap between blocks */
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #dce4ec; /* Separator from general info */
+}
+
+.stats-block-period {
+    background-color: #f9fbfc; /* Light background */
+    border: 1px solid #e0eaf0; /* Subtle border */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-block-period h4 {
+    margin-top: 0;
+    margin-bottom: 15px; /* More space below heading */
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebf5fb; /* Light separator below heading */
+    color: #1f3a60; /* Darker color for block titles */
+}
+
+.stats-block-period .stats-item {
+    margin-bottom: 10px; /* Space between stats items */
+    font-size: 16px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+}
+
+.stats-block-period .stats-item i {
+     color: #5a9bd4; /* Icon color */
+     font-size: 18px;
+     min-width: 20px; /* Ensure consistent icon spacing */
+     text-align: center;
+}
+
+.stats-block-period .stats-item:last-child {
+    margin-bottom: 0; /* No margin for the last item */
+}
+
+
+/* === Responsive Design === */
+@media (max-width: 1200px) {
+    .container {
+        flex-direction: column;
+        align-items: center; /* Center columns when stacked */
+        padding: 0 15px;
+    }
+
+    .sidebar-left, .sidebar-right {
+        width: 95%; /* Take more width when stacked */
+        margin-bottom: 20px; /* Space between stacked sidebars and main content */
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .main-content {
+        width: 95%; /* Take more width when stacked */
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+        max-width: 100%; /* Remove max-width constraint when stacked */
+    }
+
+    .site-card {
+        flex-direction: column; /* Stack image and info in site card */
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .site-card-image-container {
+        width: 100%; /* Full width for image */
+        height: 250px; /* Adjusted height */
+    }
+
+     .site-info {
+         min-width: 0; /* Allow shrinking */
+     }
+
+     .tab {
+        padding: 10px 15px; /* Smaller tab padding */
+     }
+
+     table th, table td {
+        padding: 10px; /* Smaller table padding */
+     }
+
+     .site-block-grid {
+         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust grid for smaller screens */
+         gap: 20px;
+     }
+
+      .site-widget-image-container {
+         height: 150px; /* Smaller thumbnail height */
+      }
+
+      .site-widget-content {
+         padding: 10px;
+         gap: 5px;
+      }
+
+      .site-widget-content h3 {
+         font-size: 18px;
+      }
+
+      .site-widget-content p {
+          font-size: 13px;
+          gap: 5px;
+      }
+
+      .site-widget-buttons {
+         padding-top: 8px;
+         gap: 8px;
+      }
+
+      .stats-block-container {
+          grid-template-columns: 1fr; /* Stack stats blocks on smaller screens */
+      }
+
+       .stats-block-period {
+            padding: 15px;
+       }
+
+       .stats-block-period h4 {
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+       }
+
+       .stats-block-period .stats-item {
+            font-size: 15px;
+            gap: 8px;
+       }
+
+       .stats-block-period .stats-item i {
+            font-size: 16px;
+       }
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 28px;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+
+     .tab {
+         padding: 10px;
+         font-size: 14px;
+     }
+
+    .sidebar-left, .sidebar-right, .main-content {
+         width: 98%;
+         padding: 15px;
+    }
+
+     .site-card-image-container {
+         height: 200px;
+     }
+
+     .site-widget-image-container {
+         height: 120px;
+     }
+
+      .site-widget-content {
+         padding: 10px;
+         gap: 5px;
+      }
+
+      .site-widget-content h3 {
+         font-size: 18px;
+      }
+
+      .site-widget-content p {
+          font-size: 13px;
+          gap: 5px;
+      }
+
+      .site-widget-buttons {
+         padding-top: 8px;
+         gap: 8px;
+      }
+
+      .stats-block-period {
+           padding: 12px;
+      }
+
+      .stats-block-period h4 {
+           font-size: 16px;
+           margin-bottom: 8px;
+           padding-bottom: 6px;
+      }
+
+      .stats-block-period .stats-item {
+           font-size: 14px;
+           gap: 8px;
+      }
+
+      .stats-block-period .stats-item i {
+           font-size: 15px;
+      }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    h3 {
+        font-size: 18px;
+    }
+
+     .tab {
+         padding: 10px;
+         font-size: 14px;
+     }
+
+    .site-block-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+     .site-card-image-container {
+         height: 150px;
+     }
+}
+
+/* === Lightbox Modal Styles === */
+
+/* Стили для модального окна (затемненный фон) */
+.lightbox-modal {
+  position: fixed;
+  z-index: 1000; /* Sit on top, поверх всего */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.9); /* Черный с прозрачностью */
+  /* Используем flex для центрирования содержимого */
+  align-items: center; /* Центрирование по вертикали */
+  justify-content: center; /* Центрирование по горизонтали */
+}
+
+/* Явно скрываем модальное окно по умолчанию */
+.lightbox-modal.hidden {
+    display: none;
+}
+
+/* Стили для содержимого модального окна (само изображение) */
+.lightbox-content {
+  margin: auto; /* Центрирование (в сочетании с flex в родительском контейнере) */
+  display: block; /* Элемент занимает всю доступную ширину контейнера */
+  max-width: 95%; /* Максимальная ширина (немного меньше 100% для отступов) */
+  max-height: 95%; /* Максимальная высота (немного меньше 100% для отступов) */
+  object-fit: contain; /* Вписываем изображение полностью, сохраняя пропорции */
+}
+
+/* Стили для кнопки закрытия */
+.close-lightbox {
+  position: absolute;
+  top: 20px; /* Отступ сверху */
+  right: 30px; /* Отступ справа */
+  color: #f1f1f1; /* Светлый цвет */
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+  z-index: 1001; /* Выше лайтбокса */
+}
+
+.close-lightbox:hover,
+.close-lightbox:focus {
+  color: #bbb; /* Цвет при наведении */
+  text-decoration: none;
+}
+
+/* Опционально: стили для подписи, если используется */
+#lightboxCaption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  /* height: 150px;  Уберите или измените, если не нужна фиксированная высота */
+}
+
+/* Медиа-запрос для адаптивности */
+@media only screen and (max-width: 768px){
+  /* Уменьшаем отступы и размеры на маленьких экранах */
+  .close-lightbox {
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+  }
+
+  .lightbox-content {
+      max-width: 98%;
+      max-height: 98%;
+  }
+}
