@@ -5,18 +5,9 @@ define('DB_USER', '_top'); // Пользователь базы данных (з
 define('DB_PASS', 'pass'); // Пароль базы данных (замени)
 define('DB_NAME', '_top'); // Имя базы данных (замени)
 
-
-define('R_HOST', $_SERVER["HTTP_HOST"]);
-define('R_ROOT', $_SERVER["DOCUMENT_ROOT"]);
-
 //---Init
 $MainCfg = array(
-    'domain' => 'https://'.$_SERVER["HTTP_HOST"],
-    'root_func' => $_SERVER["DOCUMENT_ROOT"]."/app/func/",
-    'root_pages' => $_SERVER["DOCUMENT_ROOT"]."/app/pages/",
-    'root_models' => $_SERVER["DOCUMENT_ROOT"]."/app/models/",
-    'root_blocks' => $_SERVER["DOCUMENT_ROOT"]."/app/blocks/",
-    'root_assets' => $_SERVER["DOCUMENT_ROOT"]."/app/assets/",
+    'domain' => "https://".$_SERVER['HTTP_HOST'],
 );
 
 // Подключение к базе данных

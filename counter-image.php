@@ -1,6 +1,6 @@
 <?php
-session_start();
-require_once 'config.php';
+@session_start();
+require_once $_SERVER['DOCUMENT_ROOT'].'/app/func/config.php';
 
 // Отключение кэширования изображения
 header('Cache-Control: no-cache, no-store, must-revalidate');

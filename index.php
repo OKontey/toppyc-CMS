@@ -1,7 +1,5 @@
 <?php
-session_start();
-require_once 'config.php';
-require_once 'functions.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/app/load.php';
 
 // Получение списка категорий
 $categories = [];
@@ -30,11 +28,11 @@ while ($row = $result->fetch_assoc()) {
     $row['unique_visitors'] = $unique_visitors;
 
     // Путь к скриншоту
-    $screenshot_path = SITE_URL . '/screenshots/' . $row['id'] . '.png';
+    $screenshot_path = $domain . '/screenshots/' . $row['id'] . '.png';
     // Проверяем наличие файла на сервере (лучше проверять наличие файла, а не полагаться только на URL)
     $local_screenshot_path = SCREENSHOT_PATH . $row['id'] . '.png';
     if (!file_exists($local_screenshot_path) || (file_exists($local_screenshot_path) && filesize($local_screenshot_path) === 0)) { // Проверяем наличие и что файл не пустой
-        $screenshot_path = SITE_URL . '/screenshots/placeholder.png'; // Убедитесь, что placeholder.png существует
+        $screenshot_path = $domain . '/screenshots/placeholder.png'; // Убедитесь, что placeholder.png существует
          // Опционально, можно вызвать generateScreenshot($row['url'], $row['id']) здесь
          // для генерации скриншота в фоновом режиме или при первом запросе, если API настроен.
     }
@@ -72,7 +70,7 @@ while ($row = $result->fetch_assoc()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toppyc.ru - Топ-10 сайтов</title>
+    <title><?=$_SERVER['HTTP_HOST']?> - Топ-10 сайтов</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>

@@ -1,7 +1,5 @@
 <?php
-session_start();
-require_once 'config.php';
-require_once 'functions.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/app/load.php';
 
 // Проверка, передан ли ID сайта
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {

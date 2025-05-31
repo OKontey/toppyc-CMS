@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/app/func/config.php';
 
 // Проверка, авторизован ли пользователь
 function isLoggedIn() {
