@@ -1,0 +1,4 @@
+<?
+//---HTML
+echo $capth;
+?>

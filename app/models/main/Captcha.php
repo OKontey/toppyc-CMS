@@ -1,5 +1,6 @@
-<?php
-session_start();
+<?
+//---model
+@session_start();
 
 // Генерация случайного кода (4 цифры)
 $code = rand(1000, 9999);
@@ -22,6 +23,6 @@ imagestring($image, 5, 30, 10, $code, $text_color);
 
 // Вывод изображения
 header('Content-Type: image/png');
-imagepng($image);
+$capth = imagepng($image);
 imagedestroy($image);
 ?>

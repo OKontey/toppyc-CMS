@@ -21,6 +21,18 @@ body {
     gap: 20px; /* Gap between sidebars and main content */
 }
 
+hr {
+    border: 1px solid #dce4ec;
+}
+
+h1 {
+    font-size: 32px;
+    border-bottom: 3px solid #3a7ecf;
+    padding-bottom: 12px;
+    margin-bottom: 25px;
+    margin-top: 0px;
+}
+
 h2, h3, h4 {
     color: #1f3a60; /* Deep blue-gray */
     margin-bottom: 15px;
@@ -936,7 +948,8 @@ table td:last-child {
 /* === Forms and Inputs === */
 .input {
     display: block; /* Make inputs block level */
-    width: calc(100% - 24px); /* Adjust for padding */
+    /*width: calc(100% - 24px);*/ /* Adjust for padding */
+    width: 100%; 
     padding: 12px;
     margin-bottom: 20px; /* Added margin */
     border: 1px solid #a2c1d9;
@@ -1352,4 +1365,17 @@ textarea.input {
       max-width: 98%;
       max-height: 98%;
   }
+}
+
+.mb-0{
+    margin-bottom: 0px;
+}
+
+.btn {
+    flex-wrap: wrap;
+}
+
+/* Стиль для центрирования tab-container на главной */
+.main-content .tab-container {
+    justify-content: center;
 }
