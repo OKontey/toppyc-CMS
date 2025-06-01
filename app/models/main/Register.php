@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user_id;
             $_SESSION['login'] = $login;
             $_SESSION['role'] = $role;
-            redirect('profile.php');
+            redirect('/profile');
         } else {
             $errors[] = 'Ошибка регистрации. Попробуйте снова.';
         }

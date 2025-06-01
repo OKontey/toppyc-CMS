@@ -6,6 +6,7 @@ return [
 
     //---lk
     'profile' => 'cabinet/Profile',
+    'add_site' => 'cabinet/Addsite',
     
 ];
 ?>
