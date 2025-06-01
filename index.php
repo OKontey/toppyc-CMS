@@ -20,6 +20,9 @@ define('asset_js', root_assets.'js/');
 define('asset_css', root_assets.'css/');
 define('asset_img', root_assets.'img/');
 
+define('DEF_img', '/screenshots/placeholder.png');
+
+
 //echo root_func; //---dev
 define('RICH', 'cpanel');
 
@@ -34,9 +37,12 @@ require_once root_models.'/main.php';
 
 
 //---page Model
-if($router_include){
+/*if($router_include){
     @include($router_include);
-}
+}*/
+@include(initorView('model'));
+//@include(initorView()['model']);
+//initorView('model');
 ?>
 
 <!DOCTYPE html>
@@ -58,9 +64,12 @@ if($router_include){
         <!-- workpart -->
         <div class="main-content">
         <?
-        if($router_include_view){
+        //initorView('view');
+        //@include(initorView()['view']);
+        @include(initorView('view'));
+        /*if($router_include_view){
             @include($router_include_view);
-        }
+        }*/
         ?>
         </div>
 

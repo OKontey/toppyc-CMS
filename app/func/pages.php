@@ -12,7 +12,7 @@ function getUri() {
 }
 
 function notFound() {
-    return array('main','Notfound','index');
+    return array('main','Notfound');
 }
 
 function preStrReturn($str){
@@ -29,95 +29,97 @@ function checkExists($path){
     return false;
 }
 
-//explode(",", $str);
-$loadRoutes = [];
-$loadRoutes += readRoutesRules('urls/main.php');
-$loadRoutes += readRoutesRules('urls/cab.php');
-$loadRoutes += readRoutesRules('urls/adm.php');
-//preStrReturn($loadRoutes); //---dev
+function paramUrl() {
+    $uri = getUri();
+    $uri = explode('/', $uri);
+    if(isset($uri)){
 
-//echo '<br><br>';
+        //preStrReturn('uri isset'); //---dev
 
-$uri = getUri();
-preStrReturn($uri); //---dev
-
-//---logout
-if ($uri == 'exit' || $uri == 'logout') {
-    //unset($_SESSION);
-    session_unset();
-    session_destroy();
-    header('location: /');
-}
-
-$result = false;
-if($loadRoutes){
-
-    /*
-    $loadRoutes += [
-        RICH => 'adm/Home',
-        RICH.'/' => 'adm/Home',
-        RICH.'/[a-z0-9]' => 'adm/Pages'
-    ];
-    */
-
-    foreach ($loadRoutes as $uriPattern => $path) {
-        //echo 'uriPattern='.$uriPattern.'; path='.$path.'<br>'; // test
-        //echo 'params='.$params; // test
-        if (preg_match("~^$uriPattern$~", $uri)) {
-
-            $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
-            //echo '<br><br>'; // test
-            //echo 'uriPattern='.$uriPattern; //---dev
-            preStrReturn('internalRoute - '.$internalRoute); //---dev
-            preStrReturn('uriPattern - '.$uriPattern); //---dev
-
-            $arrContollerParams = explode('/', $internalRoute);
-            preStrReturn($arrContollerParams); //---dev
-
-            $result = true;
-            break;
+        $paramUrl['view'] = !empty($uri[0]) ? $uri[0] : '/';
+        if(isset($uri[1])){
+            $paramUrl['param'] = $uri[1];
+            if(isset($uri[2])){
+                $paramUrl['page'] = (int)$uri[2];
+            }
         }
-    } // end foreach
-} // end if loadRoutes
-
-if ($result == false) {
-    $arrContollerParams = notFound();
+    }//else $paramUrl['view'] = 'home';
+    return $paramUrl;
 }
-//echo 'result='.$result;
-$router_include = '';
 
-if($arrContollerParams){
-    //preStrReturn($arrContollerParams); // test
-    //foreach ($arrContollerParams as $key => $val) {
-        //echo 'key='.$key.'; val='.$val.'<br>'; // test
-        $model = $arrContollerParams[0];
-        $page = $arrContollerParams[1];
-        //$view = $arrContollerParams[2];
+function includeRules(){
+    //explode(",", $str);
+    $loadRoutes = [];
+    $loadRoutes += readRoutesRules('urls/main.php');
+    $loadRoutes += readRoutesRules('urls/cab.php');
+    $loadRoutes += readRoutesRules('urls/adm.php');
+    //preStrReturn($loadRoutes); //---dev
+    return $loadRoutes;
+}
 
-        $path_Model = root_models.$model.'/'.$page.'.php';
-        $path_View = root_pages.$model.'/'.$page.'.php';
+function checkRules(){
+    $result = false;
+    $loadRoutes = includeRules();
+    $uri = paramUrl()['view'];
+    if($loadRoutes && $uri){
 
-        //preStrReturn($path_Model); //---dev
-        //preStrReturn($path_View); //---dev
+        preStrReturn('loadRoutes && uri TRUE'); //---dev
+        /*
+        $loadRoutes += [
+            RICH => 'adm/Home',
+            RICH.'/' => 'adm/Home',
+            RICH.'/[a-z0-9]' => 'adm/Pages'
+        ];
+        */
+    
+        foreach ($loadRoutes as $uriPattern => $path) {
+            //preStrReturn('uriPattern - '.$uriPattern); //---dev
+            //preStrReturn($path); //---dev
+            if (preg_match("~^$uriPattern$~", $uri)) {
+    
+                $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
+                //preStrReturn('internalRoute - '.$internalRoute); //---dev
+    
+                $arrContollerParams = explode('/', $internalRoute);
+                //preStrReturn($arrContollerParams); //---dev
+    
+                $result = true;
+                break;
+            }
+        } // end foreach
+    }// end if loadRoutes
+    if ($result == false) {
+        $arrContollerParams = notFound();
+    }
+    return $arrContollerParams;
+}
 
-        //echo $model;
-        //$globalModel = R_ROOT.'/pages/models/'.$model.'.php';
-        //include($globalModel); 
+function getParam($arr){
+    if($arr){
+        $par['model'] = $arr[0];
+        $par['page'] = $arr[1];
+        return $par;
+    }
+    return preStrReturn('ERR getParam func');
+}
 
+function rootFile($arr=false,$type='model'){
+    if($arr){
+        $path = getParam($arr);
+        if(!$path) return preStrReturn('ERR rootFile func / path');
+
+        $res = ($type =='model') ? root_models : root_pages;
         
-        if(checkExists($path_Model)){
-            $router_include = $path_Model;
-        }
-        if(checkExists($path_View)){
-            $router_include_view = $path_View;
-        }
+        $includer = $res.$path["model"].'/'.$path["page"].'.php';
+        preStrReturn($includer); //---dev
+        return $includer;
+    }
+    return preStrReturn('ERR rootFile func');
+}
 
-        //print_r($path_Model); // test
-        //echo '<br><br>'; // test
-        //print_r($path_View); // test
-
-    //}
-}//else echo 'none arrContollerParams';
-
-//preStrReturn($result); // test
+function initorView($type){
+    $arrContollerParams = checkRules();
+    $finInclude = [];
+    return rootFile($arrContollerParams,$type);
+}
 ?>
