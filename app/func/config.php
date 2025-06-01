@@ -1,9 +1,9 @@
 <?php
 //---connect
 define('DB_HOST', 'localhost'); // host
-define('DB_USER', 'rich_topsites'); // user BD
-define('DB_NAME', 'rich_topsites'); // base name
-define('DB_PASS', 'topsites123'); // pass BD
+define('DB_USER', 'irich_topsites0'); // user BD
+define('DB_NAME', 'irich_topsites0'); // base name
+define('DB_PASS', 'topsites0-3x'); // pass BD
 
 //---Init
 /*

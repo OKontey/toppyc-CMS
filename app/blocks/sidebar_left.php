@@ -7,9 +7,9 @@
     <h3><?=R_HOST?></h3>
     <?php if (isLoggedIn()): ?>
         <a href="/" class="sidebar-btn btn btn-primary"><i class="fas fa-home"></i> Главная</a>
-        <a href="profile.php" class="sidebar-btn btn btn-primary"><i class="fas fa-user"></i> Кабинет</a>
+        <a href="/profile" class="sidebar-btn btn btn-primary"><i class="fas fa-user"></i> Кабинет</a>
         <?php if (isAdmin()): ?>
-            <a href="<?=RICH?>" class="sidebar-btn btn btn-admin"><i class="fas fa-cog"></i> Админ-панель</a>
+            <a href="/<?=RICH?>" class="sidebar-btn btn btn-admin"><i class="fas fa-cog"></i> Админ-панель</a>
         <?php endif; ?>
         <a href="/logout" class="sidebar-btn btn btn-primary"><i class="fas fa-sign-out-alt"></i> Выйти</a>
     <?php else: ?>

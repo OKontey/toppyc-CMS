@@ -43,8 +43,9 @@ preStrReturn($uri); //---dev
 
 //---logout
 if ($uri == 'exit' || $uri == 'logout') {
-    //$arrContollerParams = notFound();
-    unset($_SESSION);
+    //unset($_SESSION);
+    session_unset();
+    session_destroy();
     header('location: /');
 }
 
